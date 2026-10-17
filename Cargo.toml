@@ -14,7 +14,7 @@ thiserror = "1.0.33"
 [features]
 vp9 = []
 backtrace = []
-# ffi-generate = ["libvpx-native-sys/generate"]
 
 [package.metadata.docs.rs]
 features = [ "vp9" ]
+

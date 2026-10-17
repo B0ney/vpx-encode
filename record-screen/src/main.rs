@@ -1,4 +1,3 @@
-
 //! Record a movie of your screen
 //!
 //! This simple utility records a movie (video only, no audio) of your screen.
@@ -68,8 +67,10 @@ struct Args {
     flag_ba: u32,
 }
 
-#[derive(Debug,serde::Deserialize)]
-enum Codec { Vp8, Vp9 }
+#[derive(Debug, serde::Deserialize)]
+enum Codec {
+    Vp9,
+}
 
 fn main() -> io::Result<()> {
     let args: Args = Docopt::new(USAGE)
@@ -139,7 +140,6 @@ fn main() -> io::Result<()> {
         mux::Segment::new(mux::Writer::new(out)).expect("Could not initialize the multiplexer.");
 
     let (vpx_codec, mux_codec) = match args.flag_codec {
-        Codec::Vp8 => (vpx_encode::VideoCodecId::VP8, mux::VideoCodecId::VP8),
         Codec::Vp9 => (vpx_encode::VideoCodecId::VP9, mux::VideoCodecId::VP9),
     };
 
@@ -153,7 +153,8 @@ fn main() -> io::Result<()> {
         timebase: [1, 1000],
         bitrate: args.flag_bv,
         codec: vpx_codec,
-    }).unwrap();
+    })
+    .unwrap();
 
     // Start recording.
 

@@ -9,7 +9,7 @@ edition = "2018"
 
 [dependencies]
 docopt = "1"
-env-libvpx-sys = "5"
+# libvpx-sys = { git = "https://github.com/B0ney/libvpx-sys" }
 quest = "0.3"
 scrap = "0.5"
 serde = {version="1", features=["derive"]}
