@@ -8,13 +8,13 @@ version = "0.6.2"
 edition = "2018"
 
 [dependencies]
-libvpx-native-sys = "5.0.13"
+libvpx-sys = { git = "https://github.com/B0ney/libvpx-sys" }
 thiserror = "1.0.33"
 
 [features]
 vp9 = []
 backtrace = []
-ffi-generate = ["libvpx-native-sys/generate"]
+# ffi-generate = ["libvpx-native-sys/generate"]
 
 [package.metadata.docs.rs]
 features = [ "vp9" ]

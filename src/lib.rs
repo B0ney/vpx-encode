@@ -248,7 +248,7 @@ impl Drop for Encoder {
     fn drop(&mut self) {
         unsafe {
             let result = vpx_codec_destroy(&mut self.ctx);
-            if result != vpx_sys::VPX_CODEC_OK {
+            if result != vpx_sys::vpx_codec_err_t::VPX_CODEC_OK {
                 eprintln!("failed to destroy vpx codec: {result:?}");
             }
         }
