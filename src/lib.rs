@@ -204,6 +204,18 @@ impl Encoder {
             vpx_sys::VPX_DL_REALTIME as c_ulong,
         ));
 
+        // flush
+        unsafe {
+            vpx_codec_encode(
+                &mut self.ctx,
+                ptr::null(),
+                pts,
+                1,
+                0,
+                vpx_sys::VPX_DL_REALTIME as c_ulong,
+            )
+        };
+
         Ok(Packets {
             ctx: &mut self.ctx,
             iter: ptr::null(),
